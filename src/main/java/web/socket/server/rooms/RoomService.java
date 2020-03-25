@@ -2,6 +2,9 @@ package web.socket.server.rooms;
 
 import java.util.ArrayList;
 
+import org.springframework.stereotype.Service;
+
+@Service
 public class RoomService {
 	
 	//After creating RoomRepository in this ArrayList will be added Rooms Object
