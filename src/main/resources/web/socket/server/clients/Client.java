@@ -13,4 +13,5 @@ public class Client {
 	
  private String name;
  private String connectedName;
+ private Integer expectedRoom;
 }

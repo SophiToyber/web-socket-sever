@@ -20,4 +20,11 @@ public class Room {
 	private Object actualRoom;
 	private ArrayList<Client> clients;
 
+	public void setClients(Client client) {
+		this.clients.add(client);
+	}
+
+	public Boolean isWaitingMatch(Client incomingClient) {
+		return clients.contains(incomingClient) ? true : false;
+	}
 }
