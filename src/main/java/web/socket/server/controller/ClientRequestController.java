@@ -8,15 +8,13 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping(path = "/check")
 public class ClientRequestController {
-
-	@PostMapping("/")
-	public void post() {
-
-	}
-
-	@GetMapping()
+	
+	
+	
+	@GetMapping("/")
 	public void get() {
-
+		// 
+		// if all be good, GetMapping will be send connected resolution
 	}
 
 }

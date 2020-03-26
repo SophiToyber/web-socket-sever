@@ -11,6 +11,7 @@ import web.socket.server.rooms.repository.SecondRoom;
 @Service
 public class RoomService {
 
+	private final String WAITING_FOR="waitingFor";
 	private ArrayList<Room> rooms = new ArrayList<>();
 	{
 		rooms.add(
@@ -24,10 +25,10 @@ public class RoomService {
 		if (rooms.get(client.getExpectedRoom()).getStatus().equals("free")) {
 
 			rooms.get(client.getExpectedRoom()).setClients(client);
-			rooms.get(client.getExpectedRoom()).setStatus("waitingFor");
+			rooms.get(client.getExpectedRoom()).setStatus(WAITING_FOR);
 			return true;
 
-		} else if (rooms.get(client.getExpectedRoom()).getStatus().equals("waitingFor")) {
+		} else if (rooms.get(client.getExpectedRoom()).getStatus().equals(WAITING_FOR)) {
 
 			return rooms.get(client.getExpectedRoom()).isWaitingMatch(client) ? true : false;
 

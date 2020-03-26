@@ -20,7 +20,7 @@ public class Room {
 	private Object actualRoom;
 	private ArrayList<Client> clients;
 
-	public void setClients(Client client) {
+	public void setClient(Client client) {
 		this.clients.add(client);
 	}
 
