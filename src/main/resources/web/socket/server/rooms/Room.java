@@ -17,7 +17,6 @@ public class Room {
 	private Integer id;
 	private String name;
 	private String status;
-	private Object actualRoom;
 	private ArrayList<Client> clients;
 
 	public void setClient(Client client) {
