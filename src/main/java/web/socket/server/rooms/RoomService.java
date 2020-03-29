@@ -1,34 +1,41 @@
 package web.socket.server.rooms;
 
 import java.util.ArrayList;
+import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
 import web.socket.server.clients.Client;
-import web.socket.server.rooms.repository.RoomTemplate;
 
 @Service
 public class RoomService {
 
 	private final String WAITING_FOR = "waitingFor";
-	private ArrayList<Room> rooms = new ArrayList<>();
-	{
-		rooms.add(Room.builder().id(1).name("firstRoom").status("free").build());
-	}
+	private final String EMPTY = "empty";
 
-	public Boolean checkFreeRoomAndConnect(Client client) {
+	private ArrayList<Room> rooms = new ArrayList<Room>();
 
-		if (rooms.get(client.getExpectedRoom()).getStatus().equals("free")) {
+	public String createRoom(Client client) {
 
-			rooms.get(client.getExpectedRoom()).setClient(client);
-			rooms.get(client.getExpectedRoom()).setStatus(WAITING_FOR);
-			return true;
-
-		} else if (rooms.get(client.getExpectedRoom()).getStatus().equals(WAITING_FOR)) {
-			return rooms.get(client.getExpectedRoom()).isWaitingMatch(client) ? true : false;
-
-		} else
-			return false;
+		try {
+			rooms.add(Room.builder().id(rooms.size()).name(client.getTopic()).status(WAITING_FOR).build());
+			rooms.get(rooms.size()).setClients(client);
+			return "created";
+		} catch (Exception e) {
+			return String.format("Error creating:: %s", e.getMessage());
+		}
 
 	}
+
+	public String connectToRoom(Client client) {
+		//find room
+		Optional<Room> optionalRoom = rooms.stream().filter(room -> room.getName().equals(client.getExpectedRoom()))
+				.findAny();
+		// add Client to RoomClients list
+		if (optionalRoom.isPresent())
+			rooms.get(rooms.indexOf(optionalRoom)).setClients(client);
+		//return topic to user
+		return optionalRoom.isPresent() ? optionalRoom.get().getName() : EMPTY;
+	}
+
 }

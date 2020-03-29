@@ -19,7 +19,7 @@ public class Room {
 	private String status;
 	private ArrayList<Client> clients;
 
-	public void setClient(Client client) {
+	public void setClients(Client client) {
 		this.clients.add(client);
 	}
 
