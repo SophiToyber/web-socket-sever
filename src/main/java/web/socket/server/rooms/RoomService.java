@@ -28,12 +28,12 @@ public class RoomService {
 	}
 
 	public String connectToRoom(Client client) {
-		//find room
+		// The controller sends us the Client, we look in the List for the Client’s room
 		Optional<Room> optionalRoom = rooms.stream().filter(room -> room.getName().equals(client.getExpectedRoom()))
 				.findAny();
 		// add Client to RoomClients list
 		optionalRoom.get().setClients(client);
-		//return topic to user
+		// return topic to user
 		return optionalRoom.isPresent() ? optionalRoom.get().getName() : EMPTY;
 	}
 
