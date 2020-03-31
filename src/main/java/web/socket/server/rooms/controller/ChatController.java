@@ -11,10 +11,10 @@ import web.socket.server.message.OutputMessage;
 @Controller
 public class ChatController {
 
-    @MessageMapping("/chat/{topic}")
-    @SendTo("/topic/messages")
-    public OutputMessage send(@DestinationVariable("topic") String topic, Message message) throws Exception {
-        return new OutputMessage(message.getFrom(), message.getText(), topic);
-    }
+	@MessageMapping("/chat/{topic}")
+	@SendTo("/topic/messages")
+	public OutputMessage send(@DestinationVariable("topic") String topic, Message message) throws Exception {
+		return new OutputMessage(message.getFrom(), message.getText(), topic);
+	}
 
 }

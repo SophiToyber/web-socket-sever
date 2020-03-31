@@ -30,6 +30,7 @@ dependencies {
 	
 	compileOnly 'org.projectlombok:lombok'
 	
+	
 	compile group: 'org.springframework', name: 'spring-messaging', version: '5.2.3.RELEASE'
 	compile group: 'org.springframework', name: 'spring-websocket', version: '5.2.3.RELEASE'
 	compile group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: '2.2.4.RELEASE'
