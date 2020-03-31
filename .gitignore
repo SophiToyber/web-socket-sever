@@ -24,6 +24,6 @@ build
 .sts4-cache
 
 # also gitignore
-bin/main/web_socket_server
+bin/main/web-socket-server
 bin	
 

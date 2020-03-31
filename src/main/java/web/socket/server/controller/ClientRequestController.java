@@ -1,22 +1,27 @@
 package web.socket.server.controller;
 
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import web.socket.server.clients.Client;
+import web.socket.server.rooms.RoomService;
+
 @RestController
-@RequestMapping(path = "/check")
+@RequestMapping(path = "/create")
 public class ClientRequestController {
 
-	@PostMapping("/")
-	public void post() {
+	final RoomService service = new RoomService();
 
+	@PostMapping(value = "/room", consumes = "application/json", produces = "application/json")
+	public String getRoom(@RequestBody Client client) {
+		return service.createRoom(client);
 	}
 
-	@GetMapping()
-	public void get() {
-
+	@PostMapping(value = "/connection", consumes = "application/json", produces = "application/json")
+	public String getConnectingToRoom(@RequestBody Client client) {
+		return service.connectToRoom(client);
 	}
 
 }
