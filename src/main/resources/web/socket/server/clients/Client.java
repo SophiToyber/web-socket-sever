@@ -12,6 +12,6 @@ import lombok.NoArgsConstructor;
 public class Client {
 	
  private String name;
- private String connectedName;
- private Integer expectedRoom;
+ private String topic;
+ private String expectedRoom;
 }
