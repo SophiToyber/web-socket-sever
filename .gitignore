@@ -3,3 +3,27 @@
 
 # Ignore Gradle build output directory
 build
+
+# Ignore IDE and compiled source
+
+.classpath
+.project
+.settings
+
+### Gradle ###
+*/.gradle
+.gradle
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+# also gitignore
+bin/main/web-socket-server
+bin	
+
